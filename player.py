@@ -11,14 +11,13 @@ class player:
         self.balance = balance
         self.direction=direction
 
-    def play(self):
+    def play(self, dice):
         method = input('which method you chooese? 1.card 2.dice')
         if method == 1:
             pass
 
         elif method == 2:    
-            shakeDice = dice()
-            moveSteps = shakeDice.roll(1)
+            moveSteps = dice.roll(1)
             return self.direction*moveSteps
 
     def set_location(self, location):

@@ -48,13 +48,6 @@ class district:
         self.msize = sizeTable[msize]
         self.mseed = mseed
         self.blocks = []
-<<<<<<< HEAD
-        self.players = []
-
-        for i in range(0, sizeTable[self.msize]):
-            tmpB = block('normal', random.randint(30, 60) * 10, random.randint(30, 60) * 1000,
-                         None, None, i)
-=======
         self.generate_map()
 
     #########################################
@@ -106,7 +99,6 @@ class district:
                     else:
                         tmpB = block('normal', prevalue, preincome, None, None, name)
 
->>>>>>> 87d14fd5d337efc25bf7ec6ddea8117026d5bdaf
             self.blocks.append(tmpB)
         for i in range(0, len(self.blocks)):
             self.blocks[i].blast = self.blocks[i - 1]

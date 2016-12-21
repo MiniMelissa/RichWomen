@@ -1,5 +1,6 @@
 from map import district
 from player import player
+from dice import dice
 import random
 
 
@@ -9,6 +10,7 @@ class controller:
         self.psize = playersize
         self.wtype = wintype
         self.round = gameround
+        self.dice = dice() 
 
         # TODO: Initial players and map
         self.players = []
@@ -60,7 +62,7 @@ class controller:
 
     def oneround(self):
         for i in range(0, self.psize):
-            moveSteps=self.players[i].play()
+            moveSteps=self.players[i].play(self.dice)
             print moveSteps
             self.players[i].set_location(\
             	self.map.updatePlayerLocation(self.players[i].name, moveSteps))
