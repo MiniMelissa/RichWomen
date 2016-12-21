@@ -7,10 +7,13 @@ class a:
 		self.shab = 'shac'
 
 
-o = a()
-print o.shab
-o.a()
-print o.shab
-o.shab = 'shad'
-print o.shab
+# o = a()
+# print o.shab
+# o.a()
+# print o.shab
+# o.shab = 'shad'
+# print o.shab
+
+
+
 		

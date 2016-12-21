@@ -45,5 +45,6 @@ if __name__ == "__main__":
     count = 100000 
     for i in range(0, count):
         value += d.roll(1)
+        print value
 
     print float(value)/count

@@ -2,6 +2,7 @@ from map import district
 from player import player
 import random
 
+
 class controller:
 
     def __init__(self, mapsize, playersize, wintype, gameround):
@@ -12,11 +13,13 @@ class controller:
         # TODO: Initial players and map
         self.players = []
         self.map = district(mapsize)
-        self.msize = self.map.msize
 
         for i in range(0, self.psize):
-            tmpPlayer = player(i, random.randint(0, self.msize), None, 0)
-            self.players.append(tmpPlayer)
+			tmploc = random.randint(0, self.map.msize-1)
+			tmpPlayer = player(i, tmploc, i, 0, 1)
+			self.players.append(tmpPlayer)
+			print tmploc
+			self.map.blocks[tmploc].players.append(i)
 
     def gamebegin(self):
         if self.wtype == 'dead':
@@ -45,7 +48,7 @@ class controller:
             if tmpCount == 1:
                 return tmpPlayer
             else:
-            	return -1
+                return -1
         else:
             maxBalance = 0
             richestPlayer = -1
@@ -57,8 +60,11 @@ class controller:
 
     def oneround(self):
         for i in range(0, self.psize):
-            self.players[i].play()
-            self.map.display()
+            moveSteps=self.players[i].play()
+            print moveSteps
+            self.players[i].set_location(\
+            	self.map.updatePlayerLocation(self.players[i].name, moveSteps))
+            print self.players[i].location
 
 if __name__ == '__main__':
     game = controller('small', 3, 'dead', 10)
